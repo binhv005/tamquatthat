@@ -1,0 +1,220 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-night: #18211a;
+  --color-moss: #344a38;
+  --color-paper: #f4ebdd;
+  --color-wood: #75543b;
+  --color-gold: #b69a62;
+  --color-gold-soft: #d4bd8a;
+  --color-ink: #302b24;
+  --color-mist: #f1e7d2;
+  --color-mist-2: #e8dbbf;
+  --color-card: #fbf6ea;
+  --color-pine: #394a30;
+  --color-pine-2: #4d6040;
+
+  --font-serif: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+  --font-sans: 'Be Vietnam Pro', 'Inter', system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 84px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+  body {
+    background: var(--color-mist);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+  }
+  .font-serif {
+    font-variant-numeric: lining-nums;
+  }
+  /* Tránh dòng cuối chỉ còn 1 chữ */
+  h1,
+  h2,
+  h3,
+  blockquote {
+    text-wrap: balance;
+  }
+  p,
+  li,
+  dd,
+  figcaption,
+  label {
+    text-wrap: pretty;
+  }
+  ::selection {
+    background: var(--color-gold);
+    color: var(--color-night);
+  }
+  :focus-visible {
+    outline: 1px solid var(--color-gold);
+    outline-offset: 3px;
+  }
+}
+
+@layer components {
+  /* Input gạch chân (form đặt lịch – nền sáng) */
+  .field {
+    width: 100%;
+    background: transparent;
+    border: 0;
+    border-bottom: 1px solid color-mix(in oklab, var(--color-ink) 25%, transparent);
+    padding: 0.7rem 0 0.55rem;
+    color: var(--color-ink);
+    font-size: 0.95rem;
+    transition: border-color 0.35s ease;
+    border-radius: 0;
+  }
+  .field::placeholder {
+    color: color-mix(in oklab, var(--color-ink) 40%, transparent);
+  }
+  .field:focus {
+    outline: none;
+    border-color: var(--color-moss);
+  }
+  select.field option {
+    background: var(--color-paper);
+    color: var(--color-ink);
+  }
+  .chip {
+    border: 1px solid color-mix(in oklab, var(--color-ink) 25%, transparent);
+    border-radius: 999px;
+    color: var(--color-ink);
+    transition: all 0.3s ease;
+  }
+  .chip:hover {
+    border-color: var(--color-moss);
+  }
+  .chip[aria-pressed='true'],
+  .chip[aria-checked='true'] {
+    background: var(--color-moss);
+    border-color: var(--color-moss);
+    color: var(--color-paper);
+  }
+}
+
+/* Lớp hạt giấy rất nhẹ tạo cảm giác thủ công */
+.grain::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 60;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ===== Animation tiện ích cho bố cục mới ===== */
+@keyframes sway {
+  0%, 100% { rotate: -2.5deg; }
+  50% { rotate: 2.5deg; }
+}
+.sway {
+  transform-origin: 0% 100%;
+  animation: sway 6s ease-in-out infinite;
+}
+@keyframes sway-soft {
+  0%, 100% { rotate: -0.6deg; translate: 0 0; }
+  50% { rotate: 0.6deg; translate: 0 6px; }
+}
+.sway-soft { transform-origin: 50% 0%; animation: sway-soft 7s ease-in-out infinite; }
+@keyframes spin { to { rotate: 360deg; } }
+.spin-slow { animation: spin 22s linear infinite; }
+@keyframes floaty {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 -14px; }
+}
+.floaty { animation: floaty 7s ease-in-out infinite; }
+@keyframes fall {
+  0% { translate: 0 -10vh; rotate: 0deg; opacity: 0; }
+  10% { opacity: 1; }
+  100% { translate: 12vw 110vh; rotate: 540deg; opacity: 0; }
+}
+.petal { animation: fall linear infinite; }
+@media (prefers-reduced-motion: reduce) {
+  .sway, .sway-soft, .spin-slow, .floaty, .petal { animation: none; }
+}
+
+/* Toàn bộ trang không bo góc */
+*,
+*::before,
+*::after {
+  border-radius: 0 !important;
+}
+
+/* Ngoại lệ: nút nổi (lên đầu trang · Zalo · Gọi) giữ hình tròn */
+.keep-round {
+  border-radius: 9999px !important;
+}
+
+/* Form đặt lịch trên nền xanh */
+.form-dark .field {
+  color: var(--color-paper);
+  border-bottom-color: color-mix(in oklab, var(--color-paper) 35%, transparent);
+  color-scheme: dark;
+}
+.form-dark .field::placeholder {
+  color: color-mix(in oklab, var(--color-paper) 45%, transparent);
+}
+.form-dark .field:focus {
+  border-color: var(--color-gold-soft);
+}
+.form-dark select.field option {
+  background: var(--color-pine);
+  color: var(--color-paper);
+}
+.form-dark .chip {
+  color: var(--color-paper);
+  border-color: color-mix(in oklab, var(--color-paper) 35%, transparent);
+}
+.form-dark .chip:hover {
+  border-color: var(--color-gold-soft);
+}
+.form-dark .chip[aria-pressed='true'],
+.form-dark .chip[aria-checked='true'] {
+  background: var(--color-gold-soft);
+  border-color: var(--color-gold-soft);
+  color: var(--color-pine);
+}
+.form-dark input[type='checkbox'] {
+  accent-color: var(--color-gold-soft);
+}
+
+/* Ngoại lệ: header & khối logo bo góc */
+.round-lg {
+  border-radius: 1.25rem !important;
+}
+
+/* Lá & cánh hoa rơi toàn trang */
+@keyframes leaf-fall {
+  0% { transform: translate3d(0, -12vh, 0) rotate(0deg); opacity: 0; }
+  8% { opacity: 1; }
+  92% { opacity: 1; }
+  100% { transform: translate3d(var(--dx, 10vw), 112vh, 0) rotate(var(--rot, 360deg)); opacity: 0; }
+}
+@keyframes leaf-flutter {
+  0%, 100% { transform: rotateY(0deg) translateX(0); }
+  50% { transform: rotateY(65deg) translateX(18px); }
+}
+.leaf-fall {
+  position: absolute;
+  top: 0;
+  animation: leaf-fall linear infinite;
+  will-change: transform;
+}
+.leaf-flutter {
+  animation: leaf-flutter ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .falling-leaves { display: none; }
+}
