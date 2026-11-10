@@ -189,8 +189,6 @@ export const content = {
       historyTitle: [['Hành trình của ', 0], ['tẩm quất', 1]],
       hanoiCaption: 'Hồ Gươm – Tháp Rùa',
       hanoiAlt: 'Tranh Hà Nội xưa: Hồ Gươm với Tháp Rùa và chùa tháp',
-      hanoi2Caption: 'Cột cờ Hà Nội – Đoan Môn',
-      hanoi2Alt: 'Tranh minh hoạ Hà Nội: Cột cờ Hà Nội và Đoan Môn',
       historyText: [
         'Tẩm quất là phương pháp xoa bóp dân gian lâu đời của người Việt, gắn liền với y học cổ truyền phương Đông.',
         'Qua nhiều thế hệ, các kỹ thuật xoa, day, ấn và bấm huyệt được truyền lại từ người đi trước cho người đi sau – bằng sự kiên nhẫn và đôi bàn tay.',
@@ -388,8 +386,6 @@ export const content = {
       historyTitle: [['The journey of ', 0], ['tẩm quất', 1]],
       hanoiCaption: 'Hoan Kiem Lake – Turtle Tower',
       hanoiAlt: 'Old Hanoi painting: Hoan Kiem Lake with Turtle Tower and pagoda',
-      hanoi2Caption: 'Hanoi Flag Tower – Doan Mon Gate',
-      hanoi2Alt: 'Hanoi illustration: the Flag Tower and Doan Mon Gate',
       historyText: [
         'Tẩm quất is a long-standing Vietnamese folk massage, rooted in traditional Eastern medicine.',
         'Over generations, the techniques of rubbing, kneading, pressing and acupressure have been passed down from one pair of hands to the next – with patience.',
