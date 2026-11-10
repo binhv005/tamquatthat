@@ -193,7 +193,7 @@ export default function History() {
           </Reveal>
           {/* Ảnh Hà Nội – Hồ Gươm, Tháp Rùa */}
           <figure className="md:col-span-7 md:col-start-6 md:row-span-2">
-            <ShapedImage name="ha-noi" alt={m.hanoiAlt} shape="" className="aspect-[3/1] w-full" sizes="(min-width:768px) 55vw, 100vw" />
+            <ShapedImage name="ho-guom" alt={m.hanoiAlt} shape="" className="aspect-[3/1] w-full" sizes="(min-width:768px) 55vw, 100vw" />
             <figcaption className="mt-3 flex justify-between font-serif text-sm text-ink/55 italic">
               <span>{m.hanoiCaption}</span>
               <span>Hà Nội</span>
@@ -205,6 +205,14 @@ export default function History() {
           <Reveal delay={0.3} className="md:col-span-4 md:col-start-9 md:mt-6">
             <p>{p3}</p>
           </Reveal>
+          {/* Ảnh Hà Nội – Cột cờ, Đoan Môn (góc dưới bên phải) */}
+          <figure className="md:col-span-4 md:col-start-9 md:mt-6">
+            <ShapedImage name="ha-noi" alt={m.hanoi2Alt} shape="" className="aspect-[4/5] w-full" sizes="(min-width:768px) 30vw, 100vw" />
+            <figcaption className="mt-3 flex justify-between font-serif text-sm text-ink/55 italic">
+              <span>{m.hanoi2Caption}</span>
+              <span>Hà Nội</span>
+            </figcaption>
+          </figure>
         </div>
       </div>
 
